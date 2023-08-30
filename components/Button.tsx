@@ -25,7 +25,7 @@ export const Button: React.FC<ButtonProps> = ({
             disabled={disabled}
             className={`
         relative disable:opacity-70 disabled:cursor-not-allowed rounded-lg hover:opacity-70 transition w-full
-        ${outline ? 'bg-white border-black text-black hover:bg-rose-500 transition' : 'bg-rose-500 text-white'}
+        ${outline ? 'bg-white border-black text-black hover:bg-slate-300 transition' : 'bg-rose-500 text-white'}
         ${small ? 'py-1 text-sm font-light border-[1px]' : 'py-3 text-md font-semibold border-2'}
         `}>
             {Icon && (

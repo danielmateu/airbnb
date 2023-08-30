@@ -6,6 +6,7 @@ import { Navbar } from '@/components/navbar/Navbar'
 import { ClientOnly } from '@/components/ClientOnly'
 // import { Modal } from '@/components/modals/Modal'
 import { RegisterModal } from '@/components/modals/RegisterModal'
+import ToasterProvider from './providers/ToasterProvider'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -27,16 +28,11 @@ export default function RootLayout({
 
       <body className={font.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          {/* <Modal
-            actionLabel='Dale Flow'
-            title="I'm a modal"
-            isOpen
-          /> */}
+          <ToasterProvider />
           <RegisterModal />
           <Navbar />
           {children}
         </ThemeProvider>
-
       </body>
     </html>
   )

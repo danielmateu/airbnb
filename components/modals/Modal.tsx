@@ -63,7 +63,7 @@ export const Modal: React.FC<ModalProps> = ({
 
     return (
         <>
-            <div className="justify-cener items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none bg-neutral-800/70">
+            <div className="justify-cener items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none bg-neutral-800/70 dark:bg-neutral-800/40">
                 <div className="relative w-5/6 md:w-4/6 lg:w-3/6 mx-auto h-auto">
                     {/*content*/}
                     <div className={`translate duration-300 h-full 
@@ -72,7 +72,7 @@ export const Modal: React.FC<ModalProps> = ({
                     
                     `}
                     >
-                        <div className="translate h-auto border-0 rounded-lg shadow-lg  relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                        <div className="translate h-auto border-0 rounded-lg shadow-lg  relative flex flex-col w-full bg-white outline-none focus:outline-none dark:text-black">
                             {/* Header */}
                             <div className="flex items-center p-6 rounded-t justify-center relative border-b-[1px]">
                                 <button className="p-1 border-0 hover:opacity-70 transition absolute left-9" onClick={handleClose}>
@@ -107,6 +107,7 @@ export const Modal: React.FC<ModalProps> = ({
                                     />
 
                                 </div>
+                                {footer}
                             </div>
                         </div>
                     </div>

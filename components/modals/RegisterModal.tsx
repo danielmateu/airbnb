@@ -6,6 +6,12 @@ import { useCallback, useState } from "react"
 import { useForm, FieldValues, SubmitHandler } from "react-hook-form"
 import { AiFillGithub } from "react-icons/ai"
 import { FcGoogle } from 'react-icons/fc'
+import { Modal } from "./Modal"
+import { Heading } from "../Heading"
+import { Input } from "../inputs/Input"
+import { toast } from "react-hot-toast"
+import { Button } from "../Button"
+
 
 export const RegisterModal = () => {
 
@@ -31,14 +37,85 @@ export const RegisterModal = () => {
 
                 registerModal.onClose()
             }).catch((error) => {
-                console.log(error);
+                toast.error('algo ha salido mal...')
             }).finally(() => {
                 setIsLoading(false)
             })
     }
 
+    const bodyContent = (
+        <div className="flex flex-col gap-4">
+            <Heading
+                title="Bienvenido a Airbnb"
+                substitle="Registrate para poder acceder a todas las funcionalidades de la aplicación"
+            />
+            <Input
+                id="name"
+                label="Nombre"
+                disabled={isLoading}
+                register={register}
+                errors={errors}
+                required
+            // placeholder="Introduce tu nombre"
+            />
+            <Input
+                id="email"
+                type="email"
+                label="Email"
+                disabled={isLoading}
+                register={register}
+                errors={errors}
+                required
+            // placeholder="Introduce tu email"
+            />
+            <Input
+                id="password"
+                type="password"
+                label="Password"
+                disabled={isLoading}
+                register={register}
+                errors={errors}
+                required
+            // placeholder="Introduce tu password"
+            />
+        </div>
+    )
+
+    const footerContent = (
+        <div className="flex flex-col gap-4">
+            <hr />
+            <Button
+                outline
+                label="Sigue con Google"
+                icon={FcGoogle}
+                onClick={() => { }}
+            />
+            <Button
+                outline
+                label="Sigue con Github"
+                icon={AiFillGithub}
+                onClick={() => { }}
+            />
+            <div className="text-neutral-500 text-center mt-4 font-light flex justify-center gap-2">
+                <p>¿Ya tienes una cuenta?</p>
+                <p
+                    onClick={registerModal.onClose}
+                    className="font-semibold cursor-pointer">Login</p>
+            </div>
+        </div>
+
+    )
 
     return (
-        <div></div>
+        <Modal
+            disabled={isLoading}
+            isOpen={registerModal.isOpen}
+            title="Regístrate"
+            actionLabel="Continuar"
+            onClose={registerModal.onClose}
+            onSubmit={handleSubmit(onSubmit)}
+            body={bodyContent}
+            footer={footerContent}
+        />
     )
 }
