@@ -89,13 +89,13 @@ export const LoginModal = () => {
                 outline
                 label="Sigue con Google"
                 icon={FcGoogle}
-                onClick={() => { }}
+                onClick={() => signIn('google')}
             />
             <Button
                 outline
                 label="Sigue con Github"
                 icon={AiFillGithub}
-                onClick={() => { }}
+                onClick={() => signIn('github')}
             />
             <div className="text-neutral-500 text-center mt-4 font-light flex justify-center gap-2">
                 <p>¿Ya tienes una cuenta?</p>

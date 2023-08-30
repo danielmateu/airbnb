@@ -11,6 +11,7 @@ import { Heading } from "../Heading"
 import { Input } from "../inputs/Input"
 import { toast } from "react-hot-toast"
 import { Button } from "../Button"
+import { signIn } from "next-auth/react"
 
 
 export const RegisterModal = () => {
@@ -34,7 +35,7 @@ export const RegisterModal = () => {
         setIsLoading(true)
         axios.post('/api/register', data)
             .then(() => {
-
+                toast.success('Registro correcto')
                 registerModal.onClose()
             }).catch((error) => {
                 toast.error('algo ha salido mal...')
@@ -88,13 +89,13 @@ export const RegisterModal = () => {
                 outline
                 label="Sigue con Google"
                 icon={FcGoogle}
-                onClick={() => { }}
+                onClick={() => signIn('google')}
             />
             <Button
                 outline
                 label="Sigue con Github"
                 icon={AiFillGithub}
-                onClick={() => { }}
+                onClick={() => signIn('github')}
             />
             <div className="text-neutral-500 text-center mt-4 font-light flex justify-center gap-2">
                 <p>¿Ya tienes una cuenta?</p>
