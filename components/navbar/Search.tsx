@@ -19,7 +19,7 @@ export const Search = () => {
         ">
             <div className="flex flex-row justify-between items-center text-sm font-semibold">
                 <div className="px-6">
-                    Donde
+                    Dónde
                 </div>
                 <div className="hidden sm:block border-x-[1px] px-6 flex-1 text-center">
                     Cuando
