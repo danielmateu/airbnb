@@ -6,7 +6,7 @@ import { ModeToggle } from "../ModeTogle"
 import { useCallback, useState } from "react"
 import { MenuItem } from "./MenuItem"
 import useRegisterModal from "@/app/hooks/useRegisterModal"
-import { LoginModal } from '../modals/LoginModal';
+
 import useLoginModal from "@/app/hooks/useLoginModal"
 import { User } from "@prisma/client"
 
