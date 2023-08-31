@@ -11,7 +11,7 @@ import { FieldValues, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { CountrySelect } from "../inputs/CountrySelect";
 import { Modal } from "./Modal";
-
+import { Map } from "../Map";
 
 enum STEPS {
     CATEGORY = 0,
@@ -66,11 +66,11 @@ export const RentModal = () => {
 
     // Funciones para avanzar y retroceder
     const onBack = () => {
-        setStep((prev) => prev - 1)
+        setStep((value) => value - 1)
     }
 
     const onNext = () => {
-        setStep((prev) => prev + 1)
+        setStep((value) => value + 1)
     }
 
     const actionLabel = useMemo(() => {
@@ -123,6 +123,8 @@ export const RentModal = () => {
                     value={location}
                     onChange={(value) => setCustomValue('location', value)}
                 />
+
+                <Map />
             </div>
 
         )
