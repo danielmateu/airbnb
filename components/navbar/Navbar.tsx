@@ -28,9 +28,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     ">
                         <Logo />
                         <Search />
-                        <UserMenu
-                            currentUser={currentUser}
-                        />
+                        <UserMenu currentUser={currentUser} />
 
                     </div>
                 </Container>

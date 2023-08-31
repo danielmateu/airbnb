@@ -1,8 +1,8 @@
 'use client'
 
 // import useRegisterModal from "@/app/hooks/useRegisterModal"
-import axios from "axios"
-import { useCallback, useState } from "react"
+// import axios from "axios"
+import { useState } from "react"
 import { useForm, FieldValues, SubmitHandler } from "react-hook-form"
 import { AiFillGithub } from "react-icons/ai"
 import { FcGoogle } from 'react-icons/fc'
@@ -12,14 +12,15 @@ import { Input } from "../inputs/Input"
 import { toast } from "react-hot-toast"
 import { Button } from "../Button"
 import useLoginModal from "@/app/hooks/useLoginModal"
-import useRegisterModal from "@/app/hooks/useRegisterModal"
+// import useRegisterModal from "@/app/hooks/useRegisterModal"
 import { useRouter } from "next/navigation"
 import { signIn } from 'next-auth/react'
 
 
 export const LoginModal = () => {
+
     const router = useRouter()
-    const registerModal = useRegisterModal()
+    // const registerModal = useRegisterModal()
     const loginModal = useLoginModal()
     const [isLoading, setIsLoading] = useState(false)
 
@@ -29,6 +30,7 @@ export const LoginModal = () => {
         formState: { errors },
     } = useForm<FieldValues>({
         defaultValues: {
+            name: '',
             email: '',
             password: '',
         }
@@ -40,16 +42,17 @@ export const LoginModal = () => {
         signIn('credentials', {
             ...data,
             redirect: false,
-        })
-            .then((resp) => {
-                setIsLoading(false)
-                if (resp?.ok) toast.success('Login correcto')
-
+        }).then((resp) => {
+            setIsLoading(false)
+            
+            if (resp?.ok) {
+                toast.success('Login correcto')
                 router.refresh()
                 loginModal.onClose()
+            }
 
-                if (!resp?.ok) toast.error('Error al iniciar sesión')
-            })
+            if (!resp?.ok) toast.error('Error al iniciar sesión')
+        })
 
     }
 
@@ -98,10 +101,10 @@ export const LoginModal = () => {
                 onClick={() => signIn('github')}
             />
             <div className="text-neutral-500 text-center mt-4 font-light flex justify-center gap-2">
-                <p>¿Ya tienes una cuenta?</p>
+                <p>¿Aun no estás registrado?</p>
                 <p
                     onClick={loginModal.onClose}
-                    className="font-semibold cursor-pointer">Login</p>
+                    className="font-semibold cursor-pointer">Sign up</p>
             </div>
         </div>
 
