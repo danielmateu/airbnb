@@ -50,7 +50,7 @@ export const CountrySelect = ({
                     borderRadius: 6,
                     colors: {
                         ...theme.colors,
-                        primary: '#2b0f0f',
+                        primary: 'black',
                         primary25: '#ffe4e6',
                     }
                 })}

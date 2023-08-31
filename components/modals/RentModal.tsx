@@ -11,7 +11,9 @@ import { FieldValues, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { CountrySelect } from "../inputs/CountrySelect";
 import { Modal } from "./Modal";
-import { Map } from "../Map";
+import { Map } from '../Map';
+import dynamic from "next/dynamic";
+
 
 enum STEPS {
     CATEGORY = 0,
@@ -51,10 +53,16 @@ export const RentModal = () => {
 
     const category = watch('category');
     const location = watch('location');
-    const guestCount = watch('guestCount');
-    const roomCount = watch('roomCount');
-    const bathroomCount = watch('bathroomCount');
-    const imageSrc = watch('imageSrc');
+    // const guestCount = watch('guestCount');
+    // const roomCount = watch('roomCount');
+    // const bathroomCount = watch('bathroomCount');
+    // const imageSrc = watch('imageSrc');
+
+
+    // const Map = useMemo(() => dynamic(() => import('../Map'), {
+    //     ssr: false
+    // }), [location])
+
 
     const setCustomValue = (id: string, value: any) => {
         setValue(id, value, {
@@ -124,7 +132,7 @@ export const RentModal = () => {
                     onChange={(value) => setCustomValue('location', value)}
                 />
 
-                <Map />
+                <Map center={location?.latlng} />
             </div>
 
         )

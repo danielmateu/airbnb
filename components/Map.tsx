@@ -20,11 +20,10 @@ L.Icon.Default.mergeOptions({
 
 interface MapProps {
     center?: number[]
+
 }
 
-export const Map = ({
-    center
-}: MapProps) => {
+export const Map: React.FC<MapProps> = ({ center }) => {
     return (
         <MapContainer
             center={center as L.LatLngExpression || [51, -0.09]}
@@ -32,7 +31,11 @@ export const Map = ({
             scrollWheelZoom={false}
             className='h-[35vh] rounded-lg shadow-sm'
         >
-
+            <TileLayer
+                url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+                attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+            />
+            {center && <Marker position={center as L.LatLngExpression} />}
         </MapContainer>
     )
 }
