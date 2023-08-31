@@ -12,10 +12,12 @@ import { Input } from "../inputs/Input"
 import { toast } from "react-hot-toast"
 import { Button } from "../Button"
 import { signIn } from "next-auth/react"
+import useLoginModal from "@/app/hooks/useLoginModal"
 
 
 export const RegisterModal = () => {
 
+    const loginModal = useLoginModal()
     const registerModal = useRegisterModal()
     const [isLoading, setIsLoading] = useState(false)
 
@@ -44,11 +46,16 @@ export const RegisterModal = () => {
             })
     }
 
+    const toggle = useCallback(() => {
+        registerModal.onClose()
+        loginModal.onOpen()
+    }, [loginModal, registerModal])
+
     const bodyContent = (
         <div className="flex flex-col gap-4">
             <Heading
                 title="Bienvenido a Airbnb"
-                substitle="Registrate para poder acceder a todas las funcionalidades de la aplicación"
+                subtitle="Registrate para poder acceder a todas las funcionalidades de la aplicación"
             />
             <Input
                 id="name"
@@ -100,11 +107,10 @@ export const RegisterModal = () => {
             <div className="text-neutral-500 text-center mt-4 font-light flex justify-center gap-2">
                 <p>¿Ya tienes una cuenta?</p>
                 <p
-                    onClick={registerModal.onClose}
+                    onClick={toggle}
                     className="font-semibold cursor-pointer">Login</p>
             </div>
         </div>
-
     )
 
     return (

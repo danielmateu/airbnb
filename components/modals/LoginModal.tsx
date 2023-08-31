@@ -2,7 +2,7 @@
 
 // import useRegisterModal from "@/app/hooks/useRegisterModal"
 // import axios from "axios"
-import { useState } from "react"
+import { useCallback, useState } from "react"
 import { useForm, FieldValues, SubmitHandler } from "react-hook-form"
 import { AiFillGithub } from "react-icons/ai"
 import { FcGoogle } from 'react-icons/fc'
@@ -12,7 +12,7 @@ import { Input } from "../inputs/Input"
 import { toast } from "react-hot-toast"
 import { Button } from "../Button"
 import useLoginModal from "@/app/hooks/useLoginModal"
-// import useRegisterModal from "@/app/hooks/useRegisterModal"
+import useRegisterModal from "@/app/hooks/useRegisterModal"
 import { useRouter } from "next/navigation"
 import { signIn } from 'next-auth/react'
 
@@ -20,7 +20,7 @@ import { signIn } from 'next-auth/react'
 export const LoginModal = () => {
 
     const router = useRouter()
-    // const registerModal = useRegisterModal()
+    const registerModal = useRegisterModal()
     const loginModal = useLoginModal()
     const [isLoading, setIsLoading] = useState(false)
 
@@ -44,7 +44,7 @@ export const LoginModal = () => {
             redirect: false,
         }).then((resp) => {
             setIsLoading(false)
-            
+
             if (resp?.ok) {
                 toast.success('Login correcto')
                 router.refresh()
@@ -56,11 +56,16 @@ export const LoginModal = () => {
 
     }
 
+    const toggle = useCallback(() => {
+        loginModal.onClose()
+        registerModal.onOpen()
+    }, [loginModal, registerModal])
+
     const bodyContent = (
         <div className="flex flex-col gap-4">
             <Heading
                 title="Bienvenido de nuevo"
-                substitle="Haz login para continuar"
+                subtitle="Haz login para continuar"
             />
             <Input
                 id="email"
@@ -101,10 +106,10 @@ export const LoginModal = () => {
                 onClick={() => signIn('github')}
             />
             <div className="text-neutral-500 text-center mt-4 font-light flex justify-center gap-2">
-                <p>¿Aun no estás registrado?</p>
+                <p>¿Primera vez usando Airbnb?</p>
                 <p
-                    onClick={loginModal.onClose}
-                    className="font-semibold cursor-pointer">Sign up</p>
+                    onClick={toggle}
+                    className="font-semibold cursor-pointer">Crea una cuenta</p>
             </div>
         </div>
 
