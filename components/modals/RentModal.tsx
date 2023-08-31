@@ -14,6 +14,7 @@ import { Modal } from "./Modal";
 import { Map } from '../Map';
 import dynamic from "next/dynamic";
 import { Counter } from "../inputs/Counter";
+import { ImageUpload } from "../inputs/ImageUpload";
 
 
 enum STEPS {
@@ -57,8 +58,7 @@ export const RentModal = () => {
     const guestCount = watch('guestCount');
     const roomCount = watch('roomCount');
     const bathroomCount = watch('bathroomCount');
-    // const imageSrc = watch('imageSrc');
-
+    const imageSrc = watch('imageSrc');
 
     // const Map = useMemo(() => dynamic(() => import('../Map'), {
     //     ssr: false
@@ -168,6 +168,22 @@ export const RentModal = () => {
                 />
             </div>
 
+        )
+    }
+
+    if (step === STEPS.IMAGES) {
+        bodyContent = (
+            <div className="flex flex-col gap-8">
+                <Heading
+                    title='Una imagen vale más que mil palabras'
+                    subtitle='Muestra a tus huéspedes cómo es tu alojamiento'
+                />
+
+                <ImageUpload
+                    value={imageSrc}
+                    onChange={(value) => setCustomValue('imageSrc', value)}
+                />
+            </div>
         )
     }
 
