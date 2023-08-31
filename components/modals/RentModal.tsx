@@ -3,10 +3,10 @@
 import useRentModal from "@/app/hooks/useRentModal"
 
 import { useState, useMemo } from 'react';
-import { Heading } from "../Heading";
+import { Heading } from '../Heading';
 import { categories } from "../navbar/Categories";
 import { CategoryInput } from "../inputs/CategoryInput";
-import { FieldValues, useForm } from "react-hook-form";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 
 import { useRouter } from "next/navigation";
 import { CountrySelect } from "../inputs/CountrySelect";
@@ -15,6 +15,9 @@ import { Map } from '../Map';
 import dynamic from "next/dynamic";
 import { Counter } from "../inputs/Counter";
 import { ImageUpload } from "../inputs/ImageUpload";
+import { Input } from "../inputs/Input";
+import axios from "axios";
+import { toast } from "react-hot-toast";
 
 
 enum STEPS {
@@ -31,6 +34,7 @@ export const RentModal = () => {
     const router = useRouter()
     const rentModal = useRentModal()
     const [step, setStep] = useState(STEPS.CATEGORY)
+    const [isLoading, setIsLoading] = useState(false)
 
     const {
         register,
@@ -80,6 +84,27 @@ export const RentModal = () => {
 
     const onNext = () => {
         setStep((value) => value + 1)
+    }
+
+    const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+        if (step !== STEPS.PRICE) {
+            return onNext()
+        }
+
+        setIsLoading(true)
+
+        axios.post('/api/listings', data).then(() => {
+            toast.success('Tu alojamiento se ha publicado correctamente')
+            router.refresh()
+
+            reset()
+            setStep(STEPS.CATEGORY)
+            rentModal.onClose()
+        }).catch(() => {
+            toast.error('Ha ocurrido un error al publicar tu alojamiento')
+        }).finally(() => {
+            setIsLoading(false)
+        })
     }
 
     const actionLabel = useMemo(() => {
@@ -167,7 +192,6 @@ export const RentModal = () => {
                     onChange={(value) => setCustomValue('bathroomCount', value)}
                 />
             </div>
-
         )
     }
 
@@ -187,12 +211,62 @@ export const RentModal = () => {
         )
     }
 
+    if (step === STEPS.DESCRIPTION) {
+        bodyContent = (
+            <div className="flex flex-col gap-8">
+                <Heading
+                    title='¿Cómo describirías tu alojamiento?'
+                    subtitle='Sé claro y conciso, si es corto y directo mejor'
+                />
+                <Input
+                    id="title"
+                    label="Título"
+                    disabled={isLoading}
+                    register={register}
+                    errors={errors}
+                    required
+                />
+                <hr />
+                <Input
+                    id="description"
+                    label="Breve descripción"
+                    disabled={isLoading}
+                    register={register}
+                    errors={errors}
+                    required
+                />
+
+            </div>
+        )
+    }
+
+    if (step === STEPS.PRICE) {
+        bodyContent = (
+            <div className="flex flex-col gap-8">
+                <Heading
+                    title='¿Ahora introduce el precio?'
+                    subtitle='El precio por noche es el que pagarán tus huéspedes'
+                />
+                <Input
+                    id="price"
+                    label="Precio por noche"
+                    formatPrice
+                    type='number'
+                    disabled={isLoading}
+                    register={register}
+                    errors={errors}
+                    required
+                />
+            </div>
+        )
+    }
+
     return (
         <Modal
             title="Reserva tu alojamiento"
             isOpen={rentModal.isOpen}
             onClose={rentModal.onClose}
-            onSubmit={onNext}
+            onSubmit={handleSubmit(onSubmit)}
             actionLabel={actionLabel}
             secondaryAction={step === STEPS.CATEGORY ? undefined : onBack}
             secondaryActionLabel={secondaryActionLabel}
