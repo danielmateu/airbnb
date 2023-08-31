@@ -13,6 +13,7 @@ import { CountrySelect } from "../inputs/CountrySelect";
 import { Modal } from "./Modal";
 import { Map } from '../Map';
 import dynamic from "next/dynamic";
+import { Counter } from "../inputs/Counter";
 
 
 enum STEPS {
@@ -43,7 +44,7 @@ export const RentModal = () => {
             location: null,
             guestCount: 1,
             roomCount: 1,
-            bathRoomCount: 1,
+            bathroomCount: 1,
             imageSrc: '',
             price: 1,
             title: '',
@@ -53,9 +54,9 @@ export const RentModal = () => {
 
     const category = watch('category');
     const location = watch('location');
-    // const guestCount = watch('guestCount');
-    // const roomCount = watch('roomCount');
-    // const bathroomCount = watch('bathroomCount');
+    const guestCount = watch('guestCount');
+    const roomCount = watch('roomCount');
+    const bathroomCount = watch('bathroomCount');
     // const imageSrc = watch('imageSrc');
 
 
@@ -105,7 +106,7 @@ export const RentModal = () => {
                 title="¿Qué categoría describe mejor tu casa?"
                 subtitle="Selecciona una categoría"
             />
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 max-h-[50vh] overflow-y-auto">
+            <div className="grid grid-cols-3 sm:grid-cols-4  gap-3 max-h-[50vh] overflow-y-auto">
                 {categories.map((item) => (
                     <div key={item.label}>
                         <CategoryInput
@@ -134,6 +135,38 @@ export const RentModal = () => {
 
                 <Map center={location?.latlng} />
             </div>
+        )
+    }
+
+    if (step === STEPS.INFO) {
+        bodyContent = (
+            <div className="flex flex-col gap-8">
+                <Heading
+                    title="Comparte información sobre tu alojamiento"
+                    subtitle="Qué servicios ofreces"
+                />
+
+                <Counter
+                    title="Huéspedes"
+                    subtitle="¿Cuántas personas pueden alojarse?"
+                    value={guestCount}
+                    onChange={(value) => setCustomValue('guestCount', value)}
+                />
+                <hr />
+                <Counter
+                    title="Habitaciones"
+                    subtitle="¿Cuántas habitaciones tienes disponibles?"
+                    value={roomCount}
+                    onChange={(value) => setCustomValue('roomCount', value)}
+                />
+                <hr />
+                <Counter
+                    title="Baños"
+                    subtitle="¿Cuántos baños hay en la casa?"
+                    value={bathroomCount}
+                    onChange={(value) => setCustomValue('bathroomCount', value)}
+                />
+            </div>
 
         )
     }
@@ -145,7 +178,7 @@ export const RentModal = () => {
             onClose={rentModal.onClose}
             onSubmit={onNext}
             actionLabel={actionLabel}
-            secondaryAction={step !== STEPS.CATEGORY ? undefined : onBack}
+            secondaryAction={step === STEPS.CATEGORY ? undefined : onBack}
             secondaryActionLabel={secondaryActionLabel}
             body={bodyContent}
         />
