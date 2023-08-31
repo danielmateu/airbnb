@@ -1,12 +1,17 @@
 'use client'
 
 import useRentModal from "@/app/hooks/useRentModal"
-import { Modal } from "./Modal"
+
 import { useState, useMemo } from 'react';
 import { Heading } from "../Heading";
 import { categories } from "../navbar/Categories";
 import { CategoryInput } from "../inputs/CategoryInput";
 import { FieldValues, useForm } from "react-hook-form";
+
+import { useRouter } from "next/navigation";
+import { CountrySelect } from "../inputs/CountrySelect";
+import { Modal } from "./Modal";
+
 
 enum STEPS {
     CATEGORY = 0,
@@ -19,8 +24,8 @@ enum STEPS {
 
 export const RentModal = () => {
 
+    const router = useRouter()
     const rentModal = useRentModal()
-
     const [step, setStep] = useState(STEPS.CATEGORY)
 
     const {
@@ -44,7 +49,12 @@ export const RentModal = () => {
         }
     })
 
-    const category = watch('category')
+    const category = watch('category');
+    const location = watch('location');
+    const guestCount = watch('guestCount');
+    const roomCount = watch('roomCount');
+    const bathroomCount = watch('bathroomCount');
+    const imageSrc = watch('imageSrc');
 
     const setCustomValue = (id: string, value: any) => {
         setValue(id, value, {
@@ -102,12 +112,28 @@ export const RentModal = () => {
         </div>
     )
 
+    if (step === STEPS.LOCATION) {
+        bodyContent = (
+            <div className="flex flex-col gap-8">
+                <Heading
+                    title="¿Dónde se encuentra tu alojamiento?"
+                    subtitle="Ayuda a tus huéspedes a encontrarte"
+                />
+                <CountrySelect
+                    value={location}
+                    onChange={(value) => setCustomValue('location', value)}
+                />
+            </div>
+
+        )
+    }
+
     return (
         <Modal
             title="Reserva tu alojamiento"
             isOpen={rentModal.isOpen}
             onClose={rentModal.onClose}
-            onSubmit={rentModal.onClose}
+            onSubmit={onNext}
             actionLabel={actionLabel}
             secondaryAction={step !== STEPS.CATEGORY ? undefined : onBack}
             secondaryActionLabel={secondaryActionLabel}
