@@ -11,7 +11,7 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { CountrySelect } from "../inputs/CountrySelect";
 import { Modal } from "./Modal";
-import { Map } from '../Map';
+// import { Map } from '../Map';
 import dynamic from "next/dynamic";
 import { Counter } from "../inputs/Counter";
 import { ImageUpload } from "../inputs/ImageUpload";
@@ -158,7 +158,7 @@ export const RentModal = () => {
                     onChange={(value) => setCustomValue('location', value)}
                 />
 
-                <Map center={location?.latlng} />
+                {/* <Map center={location?.latlng} /> */}
             </div>
         )
     }

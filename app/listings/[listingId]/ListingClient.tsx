@@ -5,14 +5,14 @@ import Container from "@/components/Container";
 import { categories } from "@/components/navbar/Categories";
 import { Listing, Reservation } from "@prisma/client"
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { ListingHead } from "../../app/listings/[listingId]/ListingHead";
-import { ListingInfo } from "./ListingInfo";
+import { ListingHead } from "../../../components/listings/ListingHead";
+import { ListingInfo } from "../../../components/listings/ListingInfo";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import { useRouter } from "next/navigation";
 import { differenceInCalendarDays, differenceInDays, eachDayOfInterval } from "date-fns";
 import axios from "axios";
 import { toast } from "react-hot-toast";
-import { ListingReservation } from "./ListingReservation";
+import { ListingReservation } from "../../../components/listings/ListingReservation";
 import { Range } from "react-date-range";
 
 const initialDateRange = {
@@ -69,24 +69,23 @@ export const ListingClient = ({
             startDate: dateRange.startDate,
             endDate: dateRange.endDate,
             listingId: listing?.id
-        }).then((res) => {
+        }).then(() => {
             toast.success('Reserva realizada con exito')
             setDateRange(initialDateRange)
             // Redirigir a /trips
             router.refresh()
-        }).catch((err) => {
+        }).catch(() => {
             toast.error('Error al realizar la reserva')
         }).finally(() => {
             setIsLoading(false)
         })
-
     }, [
-        currentUser,
+        totalPrice,
         dateRange,
         listing?.id,
-        loginModal,
         router,
-        totalPrice
+        currentUser,
+        loginModal,
     ])
 
     useEffect(() => {
@@ -106,8 +105,6 @@ export const ListingClient = ({
     const category = useMemo(() => {
         return categories.find((item) => item.label === listing.category)
     }, [listing.category])
-
-    // if (!category) {}
 
     return (
         <Container>

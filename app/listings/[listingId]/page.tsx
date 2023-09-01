@@ -3,7 +3,7 @@ import getListingById from '@/app/actions/getListingById'
 import { ClientOnly } from '@/components/ClientOnly'
 import { EmptyState } from '@/components/EmptyState'
 import React from 'react'
-import { ListingClient } from '../../../components/listings/ListingClient'
+import { ListingClient } from './ListingClient'
 
 interface Iparams {
     listingId: string

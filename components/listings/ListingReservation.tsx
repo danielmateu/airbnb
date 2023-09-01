@@ -48,7 +48,7 @@ export const ListingReservation = ({
                     label='Reservar'
                 />
             </div>
-            <div className="p-4 flex items-center justify-between font-semibold text-lg">
+            <div className="p-4 flex items-center justify-between font-semibold text-lg dark:text-black">
                 <div>Total</div>
                 <div>€ {totalPrice}</div>
             </div>
