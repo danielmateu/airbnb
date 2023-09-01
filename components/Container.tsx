@@ -15,7 +15,7 @@ const Container: React.FC<ContainerProps> = ({
         md:px-10
         px-8
         dark:bg-slate-800
-        h-full
+        min-h-full
         ">
             {children}
         </div>
