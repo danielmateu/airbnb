@@ -75,7 +75,7 @@ export const ListingClient = ({
         }).then(() => {
             toast.success('Reserva realizada con exito')
             setDateRange(initialDateRange)
-            // Redirigir a /trips
+            router.push('/trips')
             router.refresh()
         }).catch(() => {
             toast.error('Error al realizar la reserva')
@@ -111,7 +111,7 @@ export const ListingClient = ({
 
     return (
         <Container>
-            <div className="px-4 py-28 sm:px-0 max-w-screen-lg mx-auto">
+            <div className="px-4 py-10 sm:px-0 max-w-screen-lg mx-auto">
                 <div className="flex flex-col gap-6">
                     <ListingHead
                         title={listing.title}
