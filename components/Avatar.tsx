@@ -15,7 +15,7 @@ export const Avatar = ({
             alt="avatar"
             width={30}
             height={30}
-            className="rounded-full"
+            className="rounded-full hover:rotate-12 hover:scale-105 transition"
         />
 
 

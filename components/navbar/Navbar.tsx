@@ -21,7 +21,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
     // console.log(currentUser);
     return (
-        <div className="fixed w-full bg-white dark:bg-slate-800 z-10 shadow-sm">
+        <div className="fixed w-full bg-white opacity-95 dark:bg-slate-800 z-10 shadow-sm">
             <div className=" py-4 border-b-[1px] dark:border-slate-700">
                 <Container>
                     <div className="flex flex-row items-center justify-between gap-3 md:gap-0 px-2

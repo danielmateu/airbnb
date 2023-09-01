@@ -41,9 +41,9 @@ export const ListingInfo = ({
     const coordinates = getByValue(locationValue)?.latlng
 
     return (
-        <div className="col-span-4 flex flex-col gap-7">
+        <div className="col-span-4 flex flex-col gap-7 shadow-md p-4 rounded-xl">
             <div className="flex flex-col gap-2">
-                <div className="text-xl font-semibold flex items-center gap-2">
+                <div className="text-xl font-semibold flex items-center gap-2 ">
                     <div>Hospedado por {user?.name}</div>
                     <Avatar
                         src={user?.image}
