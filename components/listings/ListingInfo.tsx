@@ -61,11 +61,10 @@ export const ListingInfo = ({
                     icon={category.icon}
                     label={category.label}
                     description={category.description}
-
                 />
             )}
             <hr />
-            <div className="text-lg font-light text-neutral-500 dark:text-neutral-200">
+            <div className="text-lg font-light text-neutral-500 dark:text-neutral-300">
                 {description}
             </div>
             <hr />

@@ -22,7 +22,7 @@ export const ListingCategory = ({
                     <div className="text-lg font-semibold">
                         {label}
                     </div>
-                    <div className="text-neutral-500 darK:text-neutral-200 font-light">
+                    <div className="text-neutral-500 dark:text-neutral-200 font-light">
                         {description}
                     </div>
                 </div>
