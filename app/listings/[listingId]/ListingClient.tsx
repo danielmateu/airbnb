@@ -1,37 +1,40 @@
 'use client'
 
-import { SafeListing, SafeUser } from "@/app/types"
-import Container from "@/components/Container";
-import { categories } from "@/components/navbar/Categories";
-import { Listing, Reservation } from "@prisma/client"
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { ListingHead } from "../../../components/listings/ListingHead";
-import { ListingInfo } from "../../../components/listings/ListingInfo";
-import useLoginModal from "@/app/hooks/useLoginModal";
+
 import { useRouter } from "next/navigation";
-import { differenceInCalendarDays, differenceInDays, eachDayOfInterval } from "date-fns";
+
+import { differenceInCalendarDays, eachDayOfInterval } from "date-fns";
 import axios from "axios";
 import { toast } from "react-hot-toast";
-import { ListingReservation } from "../../../components/listings/ListingReservation";
 import { Range } from "react-date-range";
+
+import { SafeListing, SafeReservation, SafeUser } from "@/app/types"
+import useLoginModal from "@/app/hooks/useLoginModal";
+
+import Container from "@/components/Container";
+import { categories } from "@/components/navbar/Categories";
+import { ListingHead } from "../../../components/listings/ListingHead";
+import { ListingInfo } from "../../../components/listings/ListingInfo";
+import { ListingReservation } from "../../../components/listings/ListingReservation";
+// import { Reservation } from '@prisma/client';
 
 const initialDateRange = {
     startDate: new Date(),
     endDate: new Date(),
     key: 'selection'
 }
-
 interface ListingClientProps {
+    reservations?: SafeReservation[]
     listing: SafeListing & {
         user: SafeUser
     }
-    reservations?: Reservation[]
     currentUser?: SafeUser | null
 }
 
 export const ListingClient = ({
-    listing,
     reservations = [],
+    listing,
     currentUser
 }: ListingClientProps) => {
 
@@ -108,7 +111,7 @@ export const ListingClient = ({
 
     return (
         <Container>
-            <div className="px-4 sm:px-0 max-w-screen-lg mx-auto">
+            <div className="px-4 py-28 sm:px-0 max-w-screen-lg mx-auto">
                 <div className="flex flex-col gap-6">
                     <ListingHead
                         title={listing.title}
