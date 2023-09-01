@@ -44,7 +44,6 @@ export const ListingReservation = ({
                 <Button
                     onClick={onSubmit}
                     disabled={disabled}
-                    // outline
                     label='Reservar'
                 />
             </div>

@@ -26,7 +26,7 @@ const ListingPage = async ({
     }
     return (
         <div>
-            {/* {listing.title} */}
+
             <ListingClient
                 listing={listing}
                 currentUser={currentUser}
