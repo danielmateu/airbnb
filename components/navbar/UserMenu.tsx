@@ -71,7 +71,7 @@ export const UserMenu = ({
                                         label="Mis viajes"
                                     />
                                     <MenuItem
-                                        onClick={() => { }}
+                                        onClick={() => router.push(`/favorites`)}
                                         label="Favoritos"
                                     />
                                     <MenuItem
