@@ -15,7 +15,7 @@ const Logo = () => {
             height={90}
             priority
             onClick={() => router.push("/")}
-            className="cursor-pointer hover:scale-105 transition"
+            className="cursor-pointer hover:scale-105 transition ml-4"
         />
     )
 }

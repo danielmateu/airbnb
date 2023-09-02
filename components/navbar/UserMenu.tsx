@@ -79,7 +79,7 @@ export const UserMenu = ({
                                         label="Mis reservas"
                                     />
                                     <MenuItem
-                                        onClick={() => { }}
+                                        onClick={() => router.push(`/properties`)}
                                         label="Mis propiedades"
                                     />
                                     <MenuItem
