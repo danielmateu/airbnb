@@ -3,7 +3,7 @@
 import useCountries from '@/app/hooks/useCountries';
 import Select from 'react-select'
 
-export type ConuntrySelectValue = {
+export type CountrySelectValue = {
     flag: string;
     label: string;
     latlng: number[];
@@ -12,8 +12,8 @@ export type ConuntrySelectValue = {
 }
 
 interface CountrySelectProps {
-    value?: ConuntrySelectValue;
-    onChange: (value: ConuntrySelectValue) => void;
+    value?:CountrySelectValue;
+    onChange: (value:CountrySelectValue) => void;
 
 }
 
@@ -30,7 +30,7 @@ export const CountrySelect = ({
                 placeholder='Cualquier sitio'
                 isClearable
                 options={getAll()}
-                onChange={(value) => onChange(value as ConuntrySelectValue)}
+                onChange={(value) => onChange(value as CountrySelectValue)}
                 formatOptionLabel={(option) => (
                     <div className='flex flex-row items-center gap-3'>
                         <div>
