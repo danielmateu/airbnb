@@ -23,6 +23,8 @@ const Home = async ({
     )
   }
 
+  // throw new Error("Error")
+
   return (
     <Container>
       <div

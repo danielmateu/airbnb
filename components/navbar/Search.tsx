@@ -1,11 +1,54 @@
 'use client'
 
+import useCountries from "@/app/hooks/useCountries"
 import useSearchModal from "@/app/hooks/useSearchModal"
+import { differenceInDays } from "date-fns"
+import { useSearchParams } from "next/navigation"
+import { useMemo } from "react"
 import { BiSearch } from "react-icons/bi"
 
 export const Search = () => {
 
     const searchModal = useSearchModal()
+    const params = useSearchParams()
+
+    const { getByValue } = useCountries()
+
+    const locationValue = params?.get('locationValue')
+    const startDate = params?.get('startDate')
+    const endDate = params?.get('endDate')
+    const guestCount = params?.get('guestCount')
+
+    const locationLabel = useMemo(() => {
+        if (locationValue) return getByValue(locationValue as string)?.label
+
+        return 'Dónde vas'
+    }, [locationValue, getByValue])
+
+    const durationLabel = useMemo(() => {
+        if (startDate && endDate) {
+            const start = new Date(startDate as string)
+            const end = new Date(endDate as string)
+            let diff = differenceInDays(end, start)
+
+            if (diff === 0) {
+                diff = 1
+            }
+
+            return `${diff} días`
+        }
+
+        return 'Cualquier semana'
+
+    }, [startDate, endDate])
+
+    const guestLabel = useMemo(() => {
+        if (guestCount) {
+            return `${guestCount} invitados`
+        }
+
+        return 'Añade invitados'
+    }, [guestCount])
 
     return (
         <div
@@ -25,13 +68,13 @@ export const Search = () => {
         ">
             <div className="flex flex-row justify-between items-center text-sm font-semibold">
                 <div className="px-6">
-                    Dónde
+                    {locationLabel}
                 </div>
                 <div className="hidden sm:block border-x-[1px] px-6 flex-1 text-center">
-                    Cuando
+                    {durationLabel}
                 </div>
                 <div className="pl-6 pr-2 text-gray-600 flex items-center gap-3">
-                    <div className="hidden sm:block dark:text-slate-300">Añade invitados</div>
+                    <div className="hidden sm:block dark:text-slate-300">{guestLabel}</div>
                     <div className="p-2 bg-rose-500 rounded-full text-white ">
                         <BiSearch />
                     </div>

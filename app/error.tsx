@@ -7,7 +7,7 @@ interface ErrorStateProps {
     error: Error
 }
 
-export const ErrorState = ({
+const ErrorState = ({
     error
 }: ErrorStateProps) => {
 
@@ -21,3 +21,5 @@ export const ErrorState = ({
         />
     )
 }
+
+export default ErrorState

@@ -126,10 +126,10 @@ export const SearchModal = () => {
                 value={location}
                 onChange={(value) => setLocation(value as CountrySelectValue)}
             />
-            <hr />
+            {/* <hr />
             <Map
                 center={location?.latlng}
-            />
+            /> */}
 
         </div>
     )
