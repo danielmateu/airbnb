@@ -24,7 +24,7 @@ export const ListingReservation = ({
     disableDates
 }: ListingReservationProps) => {
     return (
-        <div className='bg-white  border-neutral-200 overflow-hidden shadow-md p-4 rounded-xl'>
+        <div className='bg-white  border-neutral-200 overflow-hidden shadow-md hover:shadow-lg transition p-4 rounded-xl'>
             <div className="flex items-center gap-1 p-4">
                 <div className="text-2xl font-semibold dark:text-black">
                     €{price}

@@ -11,7 +11,6 @@ export const Search = () => {
 
     const searchModal = useSearchModal()
     const params = useSearchParams()
-
     const { getByValue } = useCountries()
 
     const locationValue = params?.get('locationValue')
@@ -54,17 +53,17 @@ export const Search = () => {
         <div
             onClick={searchModal.onOpen}
             className="
-        border-[1px]
-        dark:border-0
-        w-full
-        md:w-auto
-        py-2
-        rounded-full
-        shadow-sm
-        hover:shadow-md
-        transition
-        cursor-pointer
-        dark:hover:bg-neutral-700
+                border-[1px]
+                dark:border-0
+                w-full
+                md:w-auto
+                py-2
+                rounded-full
+                shadow-sm
+                hover:shadow-md
+                transition
+                cursor-pointer
+                dark:hover:bg-neutral-700
         ">
             <div className="flex flex-row justify-between items-center text-sm font-semibold">
                 <div className="px-6">

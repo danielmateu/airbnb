@@ -6,9 +6,27 @@ html,
 body,
 :root {
     height: 100%;
+
 }
 
-.leaflet-bottom,
+body::-webkit-scrollbar {
+    display: none;
+}
+
+.listing_icons::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+
+
+section .leaflet-bottom,
 .leaflet-control,
 .leaflet-pane,
 .leaflet-top {
