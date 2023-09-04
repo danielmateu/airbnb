@@ -137,7 +137,7 @@ export const Categories = () => {
                 <div ref={rowRef} className="listing_icons relative pt-4 flex items-center  px-0 gap-0 sm:gap-4 md:gap-6 lg:gap-8 overflow-x-auto">
                     <FaChevronLeft
                         size={20}
-                        className={`cursor-pointer text-rose-300 hover:text-rose-500 transition fixed z-50 left-10 top-[120px] m-2 opacity-0 group-hover:opacity-100`}
+                        className={`cursor-pointer text-rose-300 hover:text-rose-500 transition fixed left-10 top-[120px] m-2 opacity-0 group-hover:opacity-100`}
                         onClick={() => { handleClick('left') }}
                     />
                     {categories.map((item) => (
@@ -151,7 +151,7 @@ export const Categories = () => {
                     ))}
                     <FaChevronRight
                         size={20}
-                        className="cursor-pointer text-rose-300 hover:text-rose-500 transition fixed z-50 right-10 top-[120px] m-2 opacity-0 group-hover:opacity-100"
+                        className="cursor-pointer text-rose-300 hover:text-rose-500 transition fixed right-10 top-[120px] m-2 opacity-0 group-hover:opacity-100"
                         onClick={() => { handleClick('right') }}
                     />
                 </div>
