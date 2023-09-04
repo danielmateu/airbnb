@@ -15,6 +15,7 @@ body::-webkit-scrollbar {
 
 .listing_icons::-webkit-scrollbar {
     display: none;
+    overflow-x: scroll
 }
 
 body {

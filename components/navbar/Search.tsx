@@ -21,7 +21,7 @@ export const Search = () => {
     const locationLabel = useMemo(() => {
         if (locationValue) return getByValue(locationValue as string)?.label
 
-        return 'Dónde vas'
+        return 'Dónde'
     }, [locationValue, getByValue])
 
     const durationLabel = useMemo(() => {
@@ -37,7 +37,7 @@ export const Search = () => {
             return `${diff} días`
         }
 
-        return 'Cualquier semana'
+        return 'Cuándo'
 
     }, [startDate, endDate])
 
