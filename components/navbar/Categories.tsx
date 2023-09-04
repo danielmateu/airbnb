@@ -108,10 +108,9 @@ export const Categories = () => {
     const rowRef = useRef<HTMLDivElement>(null);
     const [isMoved, setIsMoved] = useState(false)
 
+
     const handleClick = (direction: string | undefined) => {
         setIsMoved(true)
-        // console.log('rowRef');
-        // console.log(rowRef.current)
 
         if (rowRef.current) {
             const { scrollLeft, clientWidth } = rowRef.current
@@ -136,10 +135,11 @@ export const Categories = () => {
         <Container>
             <div className="group">
                 <div ref={rowRef} className="listing_icons relative pt-4 flex items-center  px-0 gap-0 sm:gap-4 md:gap-6 lg:gap-8 overflow-x-auto">
-                <FaChevronLeft
-                    className="cursor-pointer hover:text-gray-500 transition fixed z-50 left-10 top-[120px] m-2 opacity-0 group-hover:opacity-100"
-                    onClick={() => { handleClick('left') }}
-                />
+                    <FaChevronLeft
+                        size={20}
+                        className={`cursor-pointer text-rose-300 hover:text-rose-500 transition fixed z-50 left-10 top-[120px] m-2 opacity-0 group-hover:opacity-100`}
+                        onClick={() => { handleClick('left') }}
+                    />
                     {categories.map((item) => (
                         <CategoryBox
                             key={item.label}
@@ -149,10 +149,11 @@ export const Categories = () => {
                             description={item.description}
                         />
                     ))}
-                <FaChevronRight
-                    className="cursor-pointer hover:text-gray-500 transition fixed z-50 right-10 top-[120px] m-2 opacity-0 group-hover:opacity-100"
-                    onClick={() => { handleClick('right') }}
-                />
+                    <FaChevronRight
+                        size={20}
+                        className="cursor-pointer text-rose-300 hover:text-rose-500 transition fixed z-50 right-10 top-[120px] m-2 opacity-0 group-hover:opacity-100"
+                        onClick={() => { handleClick('right') }}
+                    />
                 </div>
             </div>
         </Container>
