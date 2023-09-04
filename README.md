@@ -84,5 +84,6 @@ Envía una solicitud de extracción (pull request) a la rama principal del proye
 
 6. Referencias!
 
+```bash
 youtube -> https://www.youtube.com/watch?v=c_-b_isI4vg
 github -> https://github.com/AntonioErdeljac/next13-airbnb-clone
