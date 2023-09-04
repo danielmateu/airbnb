@@ -27,9 +27,7 @@ const Home = async ({
 
   return (
     <Container>
-      <div
-        className="pt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-6 lg:gap-8 h-full pb-20"
-      >
+      <div className="pt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-6 lg:gap-8 h-full pb-20">
         {
           listings.map((listing: any) => (
             <ListingCard
