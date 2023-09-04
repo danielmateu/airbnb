@@ -1,6 +1,6 @@
 # Airbnb Clone
 
-![Logo del Proyecto](enlace-a-tu-logo.png)
+![Logo](https://my-places-chi.vercel.app/images/logo.png)
 
 3. [Instalación](#instalación)
 4. [Configuración](#configuración)
