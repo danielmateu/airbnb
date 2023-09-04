@@ -98,12 +98,12 @@ export const RegisterModal = () => {
                 icon={FcGoogle}
                 onClick={() => signIn('google')}
             />
-            <Button
+            {/* <Button
                 outline
                 label="Sigue con Github"
                 icon={AiFillGithub}
                 onClick={() => signIn('github')}
-            />
+            /> */}
             <div className="text-neutral-500 text-center mt-4 font-light flex justify-center gap-2">
                 <p>¿Ya tienes una cuenta?</p>
                 <p
