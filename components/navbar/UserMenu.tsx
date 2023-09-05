@@ -61,7 +61,7 @@ export const UserMenu = ({
             </div>
             {
                 isOpen && (
-                    <div className="absolute z-50 rounded-xl shadow-md w-[30vw] md:w-[20vw] bg-white overflow-hidden right-[25px] top-12 text-sm">
+                    <div className="absolute z-50 rounded-xl shadow-md w-[150px] md:w-[20vw] bg-white overflow-hidden right-[25px] top-12 text-sm">
                         <div className="flex flex-col cursor-pointer">
                             {currentUser ? (
                                 <>
