@@ -58,8 +58,6 @@ DATABASE_URL=""
 
 NEXTAUTH_SECRET=""
 
-NEXTAUTH_URL=http://localhost:3000
-
 GITHUB_CLIENT_ID=
 GITHUB_SECRET=
 
@@ -87,3 +85,4 @@ Envía una solicitud de extracción (pull request) a la rama principal del proye
 ```bash
 youtube -> https://www.youtube.com/watch?v=c_-b_isI4vg
 github -> https://github.com/AntonioErdeljac/next13-airbnb-clone
+
