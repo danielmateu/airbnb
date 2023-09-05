@@ -45,14 +45,14 @@ export const UserMenu = ({
             <div className="flex items-center gap-1">
                 <div
                     onClick={onRent}
-                    className="hidden lg:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-700 transition cursor-pointer">
+                    className="hidden lg:block text-sm font-semibold py-3 px-2 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-700 transition cursor-pointer">
                     Pon tu casa en Airbnb
                 </div>
 
                 <ModeToggle />
 
                 <div onClick={toggleOpen}
-                    className="p-4 md:py-1 md:px-4 border-[1px] border-neutral-200 dark:border-0 flex flex-grow items-center gap-3 rounded-full cursor-pointer hover:shadow-md transition mr-2">
+                    className="p-4 md:py-1 md:px-4 border-[1px] border-neutral-200 dark:border-0 flex flex-grow items-center gap-3 rounded-full cursor-pointer hover:shadow-md transition ">
                     <AiOutlineMenu />
                     <div className="hidden md:block">
                         <Avatar src={currentUser?.image} />

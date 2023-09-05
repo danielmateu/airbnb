@@ -23,14 +23,13 @@ export const Navbar: React.FC<NavbarProps> = ({
     return (
         <div className="sticky top-0 w-full bg-white opacity-95 dark:bg-slate-800 z-10 shadow-sm">
             <div className=" py-4 border-b-[1px] dark:border-slate-700">
-
-                <div className="flex items-center justify-between 
-                    ">
-                    <Logo />
-                    <Search />
-                    <UserMenu currentUser={currentUser} />
-                </div>
-
+                <Container>
+                    <div className="flex items-center justify-between">
+                        <Logo />
+                        <Search />
+                        <UserMenu currentUser={currentUser} />
+                    </div>
+                </Container>
             </div>
             <Categories />
         </div>
