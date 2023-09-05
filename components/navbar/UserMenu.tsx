@@ -66,6 +66,10 @@ export const UserMenu = ({
                             {currentUser ? (
                                 <>
                                     <MenuItem
+                                        onClick={() => router.push(`/`)}
+                                        label="Inicio"
+                                    />
+                                    <MenuItem
                                         onClick={() => router.push(`/trips`)}
                                         label="Mis viajes"
                                     />

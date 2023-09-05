@@ -38,7 +38,7 @@ export const TripsClient = ({
     return (
         <Container>
             <Heading
-                title="Tus reservas"
+                title="Tus viajes"
                 subtitle="Dónde vas y de dónde vienes"
             />
             <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
